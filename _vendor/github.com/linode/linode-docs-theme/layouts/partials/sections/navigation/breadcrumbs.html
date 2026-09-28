@@ -1,0 +1,50 @@
+{{ $p := .page }}
+{{ $wrap := .wrap }}
+<nav class="breadcrumbs breadcrumbs-static text-sm" x-data>
+  <ol class="list-none pb-0 inline-flex {{ if $wrap }}flex-wrap{{ end }} -mt-1">
+    {{ template "breadcrums-item" (dict "p1" $p "p2" $p ) }}
+    {{ $platformParent := partial "funcs/get-relation-platform-parent.html" $p }}
+    {{ if $platformParent }}
+      <li class="flex items-center mt-1">
+        {{ template "breadcrumbs-arrow" . }}
+        <a href="{{ $platformParent.page.RelPermalink }}" class="truncate"
+          >{{ $platformParent.page.LinkTitle }}</a
+        >
+      </li>
+    {{ end }}
+  </ol>
+</nav>
+
+{{ define "breadcrumbs-home" }}
+  <a
+    class="max-w-32 truncate"
+    data-turbo="false"
+    href="{{ site.Home.RelPermalink }}"
+    @click="$store.search.clearQuery()">
+    Akamai Cloud
+  </a>
+{{ end }}
+
+{{ define "breadcrums-item" }}
+  {{ if .p1.Parent }}
+    {{ template "breadcrums-item" (dict "p1" .p1.Parent "p2" .p2 ) }}
+  {{ end }}
+  <li class="flex items-center mt-1">
+    {{ if .p1.IsHome }}
+      {{ template "breadcrumbs-home" . }}
+    {{ else }}
+      {{ if ne .p1 .p2 }}
+        {{ template "breadcrumbs-arrow" . }}
+        <a href="{{ .p1.RelPermalink }}" class="truncate">
+          {{ .p1.LinkTitle }}
+        </a>
+      {{ end }}
+    {{ end }}
+  </li>
+{{ end }}
+
+{{ define "breadcrumbs-arrow" }}
+  <svg class="mx-3 text-basicgray" style="width: 5px; height: 13px;">
+    <use href="#icon--arrow-right"></use>
+  </svg>
+{{ end }}

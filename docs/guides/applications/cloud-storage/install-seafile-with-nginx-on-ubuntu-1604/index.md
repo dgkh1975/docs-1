@@ -1,25 +1,23 @@
 ---
 slug: install-seafile-with-nginx-on-ubuntu-1604
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Seafile is an open-source cross-platform file hosting tool with server applications for Linux and Windows. We will show you how to install it on Ubuntu 16.04.'
+title: Install Seafile with NGINX on Ubuntu 16.04
+description: 'This guide shows how to install Seafile, a free and open-source cross-platform file hosting tool with server applications for Linux and Windows, on Ubuntu 16.04.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-05-23
+modified: 2023-02-15
 keywords: ["Seafile", " nginx", " Ubuntu 16.04", " file server", " media", " sharing"]
 tags: ["ubuntu", "nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-06-21
-modified_by:
-  name: Linode
-published: 2017-05-23
-title: Install Seafile with NGINX on Ubuntu 16.04
 external_resources:
  - '[Seafile Server Manual](https://manual.seafile.com/)'
-aliases: ['/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604/']
+aliases: []
+deprecated: true
 ---
 
 Seafile is a cross-platform file hosting tool with server applications for Linux and Windows, and GUI clients for Android, iOS, Linux, OS X and Windows. It supports file versioning and snapshots, two-factor authentication, WebDAV, and can be paired with NGINX or Apache to enable connections over HTTPS.
 
-Seafile has [two editions](https://www.seafile.com/en/product/private_server/): a free and open source Community Edition and a paid Professional edition. While the Pro edition is free for up to 3 users, this guide will use Seafile Community Edition with NGINX serving an HTTPS connection, and MySQL on the backend. This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode/) service with this setup.
+Seafile has [two editions](https://www.seafile.com/en/product/private_server/): a free and open source Community Edition and a paid Professional edition. While the Pro edition is free for up to 3 users, this guide will use Seafile Community Edition with NGINX serving an HTTPS connection, and MySQL on the backend. This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](https://techdocs.akamai.com/cloud-computing/docs/block-storage) service with this setup.
 
 ![Install Seafile with NGINX on Ubuntu 16.04](seafile-title-graphic.png)
 
@@ -27,7 +25,7 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
 ## Prepare Ubuntu
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/cloud/guides/linux-users-and-groups) guide.
 {{< /note >}}
 
 1.  Update the system:
@@ -42,12 +40,12 @@ This guide is written for a non-root user. Commands that require elevated privil
 3.  Log out of your Linode's root user account and back in as *sfadmin*:
 
         exit
-        ssh sfadmin@<your_linode's_ip>
+        ssh sfadmin@<your_Linode_ip>
 
 
-4.  You should now be logged into your Linode as *sfadmin*. Use our [Securing Your Server](/docs/security/securing-your-server/#harden-ssh-access) guide to harden SSH access.
+4.  You should now be logged into your Linode as *sfadmin*. Use our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#harden-ssh-access) guide to harden SSH access.
 
-5.  Set up UFW rules. UFW is Ubuntu's iptables controller which makes setting up firewall rules a little easier. For more info on UFW, see our guide [Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/). Set the allow rules for SSH and HTTP(S) access with:
+5.  Set up UFW rules. UFW is Ubuntu's iptables controller which makes setting up firewall rules a little easier. For more info on UFW, see our guide [Configure a Firewall with UFW](/cloud/guides/configure-firewall-with-ufw). Set the allow rules for SSH and HTTP(S) access with:
 
         sudo ufw allow ssh
         sudo ufw allow http
@@ -71,7 +69,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         [ 5] 80 (v6)                    ALLOW IN    Anywhere (v6)
         [ 6] 443 (v6)                   ALLOW IN    Anywhere (v6)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can delete it. For example, you can delete the rule to allow SSH over IPv6 with `sudo ufw delete 4`.
 {{< /note >}}
 
@@ -93,15 +91,15 @@ If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can de
 
 ## Install and Configure MySQL
 
-1.  During Installation, you will be asked to assign a password for the root mysql user. Be sure to install the package `mysql-server-5.7`, not `mysql-server`. This is because an upstream issue causes problems starting the MySQL service if you install by using the `mysql-server` package.
+1.  During Installation, you will be asked to assign a password for the root mysql user.
 
-        sudo apt install mysql-server-5.7
+        sudo apt install mysql-server
 
 2.  Run the *mysql_secure_installation* script:
 
         sudo mysql_secure_installation
 
-    For more info on MySQL, see our guide: [Install MySQL on Ubuntu](/docs/databases/mysql/install-mysql-on-ubuntu-14-04/)
+    For more info on MySQL, see our guide: [Install MySQL on Ubuntu](/cloud/guides/install-mysql-on-ubuntu-14-04)
 
 ## Create a TLS Certificate for use with NGINX
 
@@ -120,7 +118,7 @@ If you don't already have an SSL/TLS certificate, you can create one. This certi
 
         sudo apt install nginx
 
-2.  Create the site configuration file. The only line you need to change below is `server_name`. For more HTTPS configuration options, see our guide on [TLS Best Practices with NGINX](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/).
+2.  Create the site configuration file. The only line you need to change below is `server_name`. For more HTTPS configuration options, see our guide on [TLS Best Practices with NGINX](/cloud/guides/getting-started-with-nginx-part-4-tls-deployment-best-practices).
 
     {{< file "/etc/nginx/sites-available/seafile.conf" nginx >}}
 server{
@@ -230,11 +228,11 @@ server{
 
     The `seahub.sh` script will set up an admin user account used to log into Seafile. You'll be asked for a login email and to create a password.
 
-    [![First time starting Seafile](seafile-firststart-small.png)](seafile-firststart.png)
+    ![First time starting Seafile](seafile-firststart.png)
 
 7. Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in NGINX's `seafile.conf` file. Nginx will redirect to HTTPS and as mentioned earlier, your browser will warn of an HTTPS connection which is not private due to the self-signed certificate you created. Once you tell the browser to proceed to the site anyway, you'll see the Seafile login.
 
-    [![Seafile login prompt](seafile-login-small.png)](seafile-login.png)
+    ![Seafile login prompt](seafile-login.png)
 
 ## Automatically Start Seafile on Sever Bootup
 
@@ -296,4 +294,4 @@ WantedBy=multi-user.target
 
 ## Updating Seafile
 
-There are various ways to update Seafile depending on if you are upgrading from one milestone to another (version 5 to 6), or upgrading between point releases (5.1.0 to 5.1.1). See the [Seafile Manual](https://manual.seafile.com/deploy/upgrade.html) for upgrade instructions that best suit your needs.
+There are various ways to update Seafile depending on if you are upgrading from one milestone to another, or upgrading between minor releases. See the [Seafile Manual](https://manual.seafile.com/upgrade/upgrade/) for upgrade instructions that best suit your needs.

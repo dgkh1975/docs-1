@@ -1,18 +1,14 @@
 ---
 slug: mitigating-memcached-amplification-attacks
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'A vulnerability in memcached is resulting in significant increase in large-scale UDP reflection and amplification attacks across the internet. Memcached should not be exposed to the internet, and there are a few basic steps you can take to secure your memcacehd instance.'
+title: Mitigating memcached Amplification Attacks
+description: "This guide shows you how to secure your memcached instance so it's not exploited in any large-scale UDP reflection and amplification attacks across the internet."
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2018-03-02
 keywords: ["memcached","deluge","amplification","memcrashed","denial","DoS","DDoS"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-03-02
-modified_by:
-  name: Linode
-published: 2018-03-02
-title: Mitigating memcached Amplification Attacks
 tags: ["security"]
-aliases: ['/security/mitigations/mitigating-memcached-amplification-attacks/']
+aliases: []
 ---
 
 ## What is Memcrashed?
@@ -35,7 +31,7 @@ Memcached should not be exposed to the internet. There are a few basic steps you
 
     1.  Bind memcached to a specific private IP address and port.
 
-    2.  Configure your Linode's firewall accordingly. If you need help setting up a firewall, see [our firewall guides](/docs/security/firewalls/) for more information.
+    2.  Configure your Linode's firewall accordingly. If you need help setting up a firewall, see [our firewall guides](/cloud/guides/security/firewalls) for more information.
 
 * If you do not require memcached to communicate over any network connection, disable UDP for memcached and ensure it is only listening on `localhost`.
 

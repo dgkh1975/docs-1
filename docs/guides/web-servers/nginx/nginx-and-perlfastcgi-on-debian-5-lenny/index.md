@@ -1,35 +1,30 @@
 ---
 slug: nginx-and-perlfastcgi-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Nginx and Perl-FastCGI on Debian 5 (Lenny)'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Debian 5 (Lenny).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-16
+modified: 2012-10-08
 keywords: ["nginx", "fastcgi perl", "nginx debian", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/nginx/nginx-and-perlfastcgi-on-debian-5-lenny/','/web-servers/nginx/nginx-and-perlfastcgi-on-debian-5-lenny/','/web-servers/nginx/perl-fastcgi/debian-5-lenny/']
-modified: 2012-10-08
-modified_by:
-  name: Linode
-published: 2009-12-16
-title: 'Nginx and Perl-FastCGI on Debian 5 (Lenny)'
+aliases: []
 relations:
     platform:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
-
-
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI.
 
-It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). These steps should be performed via a root login to your Linode over SSH.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -85,15 +80,15 @@ Issue the following commands to enable the site:
     ln -s /etc/nginx/sites-available/www.example.com
     /etc/init.d/nginx restart
 
-You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address (found on the **Networking** tab in the [Linode Manager](http://cloud.linode.com//)).
+You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](https://techdocs.akamai.com/cloud-computing/docs/common-dns-configurations) pointing your domain name to your Linode's IP address (found on the **Networking** tab in the [Linode Manager](http://cloud.linode.com/)).
 
 ## Configure FastCGI Wrapper
 
 Issue the following command sequence to download the FastCGI wrapper script (credit: [Denis S. Filimonov](http://www.ruby-forum.com/topic/145858)) and an init script to control the FastCGI process, set the permissions, launch the wrapper for the first time, and ensure that FastCGI launches at startup:
 
     cd /opt/
-    wget -O fastcgi-wrapper http://www.linode.com/docs/assets/671-fastcgi-wrapper.sh
-    wget -O init-deb.sh http://www.linode.com/docs/assets/670-init-deb.sh
+    wget -O fastcgi-wrapper 671-fastcgi-wrapper.sh
+    wget -O init-deb.sh 670-init-deb.sh
     mv /opt/fastcgi-wrapper /usr/bin/fastcgi-wrapper.pl
     mv /opt/init-deb.sh /etc/init.d/perl-fastcgi
     chmod +x /usr/bin/fastcgi-wrapper.pl
@@ -103,7 +98,7 @@ Issue the following command sequence to download the FastCGI wrapper script (cre
 
 ## Test Perl with FastCGI
 
-Create a file called "test.pl" in your site's "public\_html" directory with the following contents:
+Create a file called "test.pl" in your site's `public_html` directory with the following contents:
 
 {{< file "/srv/www/www.example.com/public\\_html/test.pl" perl >}}
 #!/usr/bin/perl
@@ -137,5 +132,5 @@ You may wish to consult the following resources for additional information on th
 - [The NGINX Homepage](http://nginx.org/)
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [Perl Documentation](http://perldoc.perl.org/)
-- [Installing NGINX on Debian 5 (Lenny)](/docs/web-servers/nginx/installation/debian-5-lenny)
-- [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Installing NGINX on Debian 5 (Lenny)](/cloud/guides/websites-with-nginx-on-debian-5-lenny)
+- [Basic NGINX Configuration](/cloud/guides/how-to-configure-nginx)

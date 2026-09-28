@@ -1,0 +1,7 @@
+[params]
+    # Adobe Analytics script used in Staging (docs.staging.linode.com/docs)
+    adobe_launch_script = "/adobe-launch.js"
+
+    # OneTrust Domain used in test/development.
+    onetrust_script_src = "/onetrust/scripttemplates/otSDKStub.js"
+    onetrust_domain_script = "EDGEAKAMAIZERONETRUSTDOMAINID"

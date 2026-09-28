@@ -1,27 +1,24 @@
 ---
 slug: ikiwiki-on-ubuntu-12-04-precise-pangolin
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Ikiwiki on Ubuntu 12.04 (Precise Pangolin)'
 description: 'Using Ikiwiki on Ubuntu 12.04 (Precise Pangolin) to power a standard wiki implementation.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2012-10-18
+modified: 2013-10-04
 keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "Precise Pangolin"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/wikis/ikiwiki/ubuntu-12-04-precise-pangolin/','/websites/wikis/ikiwiki-on-ubuntu-12-04-precise-pangolin/']
-modified: 2013-10-04
-modified_by:
-  name: Linode
-published: 2012-10-18
-title: 'Ikiwiki on Ubuntu 12.04 (Precise Pangolin)'
-deprecated: true
+aliases: []
 relations:
     platform:
         key: using-ikiwiki
         keywords:
            - distribution: Ubuntu 12.04
+deprecated: true
 ---
 
-Ikiwiki is a static website content management system. Originally designed as a wiki "engine", the package is built on top of plain text files and standard revision control components. Ikiwiki also contains support for blogging, an advanced template system, and an extensive plugin system and library that provide users with great flexibility and features. The installation procedure outlined in this document will guide you through deploying an ikiwiki site using [git](/docs/development/version-control/how-to-configure-git) for version control, and either the [Apache](/docs/web-servers/apache/) or [NGINX](/docs/web-servers/nginx/) web server.
+Ikiwiki is a static website content management system. Originally designed as a wiki "engine", the package is built on top of plain text files and standard revision control components. Ikiwiki also contains support for blogging, an advanced template system, and an extensive plugin system and library that provide users with great flexibility and features. The installation procedure outlined in this document will guide you through deploying an ikiwiki site using [git](/cloud/guides/how-to-configure-git) for version control, and either the [Apache](/cloud/guides/web-servers/apache) or [NGINX](/cloud/guides/web-servers/nginx) web server.
 
 ## Basic System Configuration
 
@@ -308,12 +305,12 @@ Add the following excerpt to `~/wiki/.git/config`:
        merge = refs/heads/master
 {{< /file >}}
 
-Issue the following commands to copy the default `basewiki` and `templates` to the `~/wiki` directory, download a [sample ikiwiki configuration file](/docs/assets/657-ikiwiki.setup), and create an initial commit in the `~/wiki` repository:
+Issue the following commands to copy the default `basewiki` and `templates` to the `~/wiki` directory, download a [sample ikiwiki configuration file](657-ikiwiki.setup), and create an initial commit in the `~/wiki` repository:
 
     cd ~/wiki
     cp -R /usr/share/ikiwiki/templates ~/wiki/
     cp -R /usr/share/ikiwiki/basewiki ~/wiki/
-    wget -O ikiwiki.setup http://www.linode.com/docs/assets/657-ikiwiki.setup
+    wget -O ikiwiki.setup 657-ikiwiki.setup
     git add .
     git config --global user.email "you@example.com"
     git config --global user.name "Your Name"

@@ -1,22 +1,18 @@
 ---
 slug: how-to-install-drupal-themes-and-modules-using-drush-on-debian-10
-author:
-    name: Linode
-    email: docs@linode.com
+title: Install Drupal Themes and Modules Using Drush on Debian 10
+title_meta: How to Install Drupal Using Drush on Debian 10
 description: 'Use Drush to install and enable themes and modules on your Drupal site running on Debian 10.'
-og_description: 'Use Drush to install and enable themes and modules on your Drupal site running on Debian 10.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2014-12-05
+modified: 2020-03-11
 keywords: ["drupal", "cms", "content management system", "content management framework", "debian", "drush"]
 tags: ["drupal","lamp","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-03-11
-modified_by:
-    name: Linode
-published: 2014-12-05
-title: How to Install Drupal Themes and Modules Using Drush on Debian 10
-h1_title: Install Drupal Themes and Modules Using Drush on Debian 10
-image: feature.png
+image: DrupalThemesMods_DrushDeb10.png
 external_resources:
- - '[SSL Certificates](/docs/security/ssl/)'
+ - '[SSL Certificates](/cloud/guides/security/ssl)'
  - '[Drush Commands](https://docs.drush.org/en/9.x/)'
  - '[Backup and Migrate](https://www.drupal.org/docs/8/modules/backup-and-migrate/howto-for-backup-and-migrate)'
 relations:
@@ -24,32 +20,31 @@ relations:
         key: how-to-install-drupal-themes
         keywords:
            - distribution: Debian 10
-aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-10/','/websites/cms/drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-10/']
+aliases: []
 ---
 
 Drush is a command line tool, which can be used for various Drupal projects. This tutorial uses Drush to install themes, modules, and covering some basic administration tasks such as backup and migrate for Drupal websites.
 
-Linode has another guide for installing Drush and creating a Drupal website, [Install Drupal using Drush on Debian 10](/docs/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-10). Depending on your experience level with Drush, you may want to start with that guide.
+Linode has another guide for installing Drush and creating a Drupal website, [Install Drupal using Drush on Debian 10](/cloud/guides/how-to-install-drupal-using-drush-on-debian-10). Depending on your experience level with Drush, you may want to start with that guide.
 
 ## Before You Begin
 
 Before installing themes, modules, and a backup system with Drush, make sure that the following prerequisites have been met:
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname) and [timezone](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services) and [create firewall rules](/docs/security/securing-your-server/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1. Follow our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to [create a standard user account](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account), [harden SSH access](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#harden-ssh-access), and [create firewall rules](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
-    {{< content "limited-user-note-shortguide" >}}
+    {{% content "limited-user-note-shortguide" %}}
 
-1.  Install and configure a [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10)
+1.  Install and configure a [LAMP stack on Debian 10](/cloud/guides/how-to-install-a-lamp-stack-on-debian-10)
 
-1.  Install [Composer and Drush on Debian 10](/docs/websites/cms/drupal/drush-drupal/how-to-install-drush-on-debian-10)
+1.  Install [Composer and Drush on Debian 10](/cloud/guides/how-to-install-drush-on-debian-10)
 
 
 1.  Make sure that your system is up to date, using:
 
         sudo apt-get update && sudo apt-get upgrade
-
 {{< note >}}
 The Drush commands to download or enable themes and modules vary depending on the version of Drush that you have installed. This guide uses Drush 10.
 {{< /note >}}
@@ -68,13 +63,13 @@ In this section you will download, enable, and set a Drupal theme using Drush.
 
          composer require drupal/bootstrap
 
-    {{< note >}}
-If you receive an error related to not being able to write to the `composer.json` file, see the [Setting the Site’s Ownership and Permissions](/docs/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-10/#setting-the-site-s-ownership-and-permissions) section of the [Install Drupal using Drush on Debian 10](/docs/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-10/) guide.
+    {{< note respectIndent=false >}}
+If you receive an error related to not being able to write to the `composer.json` file, see the [Setting the Site’s Ownership and Permissions](/cloud/guides/how-to-install-drupal-using-drush-on-debian-10#setting-the-sites-ownership-and-permissions) section of the [Install Drupal using Drush on Debian 10](/cloud/guides/how-to-install-drupal-using-drush-on-debian-10) guide.
 
 Ensure that your `/var/www/html/example.com/public_html` directory has user and group read, write, and execute permissions.
 
     sudo chmod 774 -R /var/www/html/example.com/public_html
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Enable the theme that you downloaded in the previous step. For example, to enable the `bootstrap` theme run the following command. Replace `bootstrap` with the name of your theme.
 
@@ -113,7 +108,6 @@ It's always important to keep regular backups of a website. Backups protect you 
 1.  To configure backup and migrate, navigate to **Administration > Configuration > Development > Backup and Migrate**
 
 1. For a quick backup, select the type of **Backup Source** and select the **Backup Destination**, and click **Backup now**
-
 {{< note >}}
 Always download a backup prior to updating or installing modules.
-{{</ note >}}
+{{< /note >}}

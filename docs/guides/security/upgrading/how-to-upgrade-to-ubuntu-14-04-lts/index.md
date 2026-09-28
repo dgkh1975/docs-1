@@ -1,31 +1,27 @@
 ---
 slug: how-to-upgrade-to-ubuntu-14-04-lts
-author:
-  name: Dave Russell
-  email: drussell@linode.com
+title: 'How to Upgrade to Ubuntu 14.04 LTS'
 description: 'Our guide to upgrading to Ubuntu 14.04 LTS'
+authors: ["Dave Russell"]
+contributors: ["Dave Russell"]
+published: 2014-10-21
+modified: 2015-02-22
 keywords: ["upgrading", "ubuntu", "ubuntu 14.04"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-deprecated: true
-modified: 2015-02-22
-modified_by:
-  name: Dave Russell
-published: 2014-10-21
-title: 'How to Upgrade to Ubuntu 14.04 LTS'
 relations:
     platform:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 14.04
-aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-14-04-lts/']
+aliases: []
+deprecated: true
 ---
 
 ![How to Upgrade to Ubuntu 14.04 LTS](How_to_Upgrade_to_Ubuntu_1404_LTS_smg.jpg)
 
 Ubuntu 14.04 is a long-term support (LTS) release that will be supported until April 2019. This guide explains how to upgrade your Linode from Ubuntu 12.04 (Precise Pangolin) to Ubuntu 14.04 (Trusty Tahr).
-
-{{< caution >}}
+{{< note type="alert" >}}
 Distribution upgrades can yield unpredictable results, due to variations in software stacks. When possible, we recommend:
 
  - Creating a new Linode with the latest disk template
@@ -33,9 +29,8 @@ Distribution upgrades can yield unpredictable results, due to variations in soft
  - Transferring your data
  - Swapping IP addresses
 
-In addition, you should use [LISH](/docs/platform/manager/using-the-linode-shell-lish/) to perform this upgrade as, in the event your internet connection is disconnected, your system may end up corrupted or the upgrade may be incomplete.
-{{< /caution >}}
-
+In addition, you should use [LISH](https://techdocs.akamai.com/cloud-computing/docs/access-your-system-console-using-lish) to perform this upgrade as, in the event your internet connection is disconnected, your system may end up corrupted or the upgrade may be incomplete.
+{{< /note >}}
 {{< note >}}
 This guide was written assuming that you have root access to your Linode. If you do not have root access, you will need to prepend each command with `sudo`.
 {{< /note >}}
@@ -57,7 +52,7 @@ Before upgrading, you will need to prepare your Linode to be upgraded. In order 
 Each of these will be discussed in more detail below.
 
 {{< note >}}
-In the interest of security, Ubuntu 14.04 LTS disables password based SSH authentication for the root user.  If you log into your root account directly via SSH, you will need to ensure that you have configured key based authentication prior to following these upgrade steps.  If you have already followed our steps for [adding a new user](/docs/security/securing-your-server/#ubuntu) to your Linode, you should be able to log in with that account after the upgrade process has completed.
+In the interest of security, Ubuntu 14.04 LTS disables password based SSH authentication for the root user.  If you log into your root account directly via SSH, you will need to ensure that you have configured key based authentication prior to following these upgrade steps.  If you have already followed our steps for [adding a new user](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#add-a-limited-user-account) to your Linode, you should be able to log in with that account after the upgrade process has completed.
 {{< /note >}}
 
 ### Installing Available Updates
@@ -76,11 +71,11 @@ Any available updates for Ubuntu 12.04 LTS will be installed on your Linode.
 
 ### Backing Up Your Linode
 
-It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/security/backups/linode-backup-service/#take-a-manual-snapshot) before upgrading to Ubuntu 14.04 LTS. If you use another backup service or application, we recommend that you make a manual backup now.
+It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](https://techdocs.akamai.com/cloud-computing/docs/take-a-manual-snapshot) before upgrading to Ubuntu 14.04 LTS. If you use another backup service or application, we recommend that you make a manual backup now.
 
 ### Checking Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/uptime/monitoring-and-maintaining-your-server/#applying-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](https://techdocs.akamai.com/cloud-computing/docs/monitor-and-maintain-a-compute-instance#apply-kernel-updates) for more information.
 
 ### Stopping Services
 
@@ -144,4 +139,4 @@ Your Linode is now running Ubuntu 14.04 LTS.
 
 ## Upgrading from Previous Ubuntu Releases
 
-If your Linode is running an release of Ubuntu older than 12.04 LTS, use the upgrade guides in the [Upgrading](/docs/security/upgrading/) section to upgrade to Ubuntu 12.04 LTS first. You may then upgrade your Linode to Ubuntu 14.04 LTS.
+If your Linode is running an release of Ubuntu older than 12.04 LTS, use the upgrade guides in the [Upgrading](/cloud/guides/security/upgrading) section to upgrade to Ubuntu 12.04 LTS first. You may then upgrade your Linode to Ubuntu 14.04 LTS.

@@ -3,9 +3,10 @@ module github.com/linode/docs
 go 1.15
 
 require (
-	github.com/bep/hugo-jslibs/alpinejs v0.5.14 // indirect
-	github.com/bep/hugo-jslibs/instantpage v0.0.0-20200822093604-7b6e0aaba587 // indirect
-	github.com/bep/hugo-jslibs/turbolinks v0.1.2 // indirect
-	github.com/bep/linodedocs v0.0.0-20210113085930-7235eebb9931
-	github.com/linode/linode-api-docs/v4 v4.83.2 // indirect
+	github.com/gohugoio/hugo-mod-jslibs/instantpage v0.5.1 // indirect
+	github.com/gohugoio/hugo-mod-jslibs/turbo/v7 v7.20300.20000 // indirect
+	github.com/instantpage/instant.page v5.1.1+incompatible // indirect
+	github.com/linode/linode-api-docs/v4 v4.176.0 // indirect
+	github.com/linode/linode-docs-theme v0.0.0-20260825162528-5a6e64e7ede8 // indirect
+	github.com/linode/linode-website-partials v0.0.0-20250814204525-0d7fe4159951 // indirect
 )

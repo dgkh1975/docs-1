@@ -1,24 +1,21 @@
 ---
 slug: test-salt-locally-with-kitchen-salt
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Test Salt states locally with Kitchen and kitchen-salt.'
-keywords: ['saltstack','salt','kitchen','kitchen-salt','kitchensalt','salt solo','saltsolo']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+title: "Test Salt States Locally with KitchenSalt"
+description: 'This guide provides you with instructions for testing Salt states locally with Kitchen and kitchen-salt, utilities that let you test without a salt master or minions.'
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2018-10-15
 modified: 2019-01-02
-modified_by:
-  name: Linode
+keywords: ['saltstack','salt','kitchen','kitchen-salt','kitchensalt','salt solo','saltsolo']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: TestSaltStatesLocallywithKitchenSalt.png
-title: "Test Salt States Locally with KitchenSalt"
 external_resources:
-- '[KitchenSalt Documentation](https://kitchen.saltstack.com/docs/file/README.rdoc)'
+- '[KitchenSalt Documentation](https://kitchen.saltproject.io/docs/file/README.rdoc)'
 - '[Kitchen Documentation](https://docs.chef.io/kitchen.html)'
-- '[Salt Formulas](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html)'
+- '[Salt Formulas](https://docs.saltproject.io/en/latest/topics/development/conventions/formulas.html)'
 - '[Writing a Test](https://kitchen.ci/docs/getting-started/writing-test/)'
 - '[Sample Pytest tests](https://github.com/gtmanfred/wordpress-formula/tree/master/tests/integration)'
-aliases: ['/applications/configuration-management/test-salt-locally-with-kitchen-salt/','/applications/configuration-management/salt/test-salt-locally-with-kitchen-salt/']
+aliases: []
 tags: ["automation","salt"]
 ---
 
@@ -26,8 +23,8 @@ KitchenSalt allows you to use Test Kitchen to test your Salt configurations loca
 
 ## Before You Begin
 
-- You will need root access to your computer, or a user account with `sudo` privilege. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
-- [Install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) on your local computer, if it is not already installed.
+- You will need root access to your computer, or a user account with `sudo` privilege. For more information on privileges, see our [Users and Groups](/cloud/guides/linux-users-and-groups) guide.
+- [Install Git](/cloud/guides/how-to-install-git-on-linux-mac-and-windows) on your local computer, if it is not already installed.
 - Update your system packages.
 
 ## Install rbenv and Ruby
@@ -58,7 +55,7 @@ Kitchen runs on Ruby. The following commands will install the Ruby version contr
 
 ## Install Docker
 
-{{< content "install-docker-ce" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ## Install KitchenSalt
 

@@ -1,0 +1,78 @@
+<div
+  class="search-panel w-full h-full overflow-y-auto"
+  x-data="lncSearchFilters()"
+  id="search-filters"
+  data-turbo-permanent>
+  <template x-if="$store.nav.searchResults.open">
+    <div class="search-panel__results container">
+      <div
+        class="search-panel__breadcrumbs mb-6 flex justify-between items-center">
+        {{ $topresults := site.GetPage "topresults" }}
+        {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" $topresults "wrap" true) }}
+        {{ partial "sections/search/select-view.html" }}
+      </div>
+      <template x-if="$store.search.results.main.loaded">
+        <div>
+          <div class="border-l-4 border-blue-100 bg-blue-200 p-4 mb-4">
+            <div class="flex">
+              <div class="ml-3">
+                <p class="text-normal text-blue-900 leading-6">
+                  Product docs and API reference are now on Akamai TechDocs.<br />
+                  <a
+                    target="_blank"
+                    :href="$store.search.docsearchLink('Akamai%20cloud%20computing')"
+                    class="text-blue-900 underline hover:text-blue-100">
+                    <span x-show="!$store.search.query.lndq">
+                      Search product docs.</span
+                    >
+                    <span x-show="$store.search.query.lndq">
+                      Search for “<span x-text="$store.search.query.lndq"></span
+                      >” in product docs.</span
+                    >
+                  </a>
+                  <br />
+                  <a
+                    target="_blank"
+                    :href="$store.search.docsearchLink('Linode+API')"
+                    class="text-blue-900 underline hover:text-blue-100">
+                    <span x-show="!$store.search.query.lndq">
+                      Search API reference.</span
+                    >
+                    <span x-show="$store.search.query.lndq">
+                      Search for “<span x-text="$store.search.query.lndq"></span
+                      >” in API reference.</span
+                    >
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <h1
+            class="block font-semibold leading-tight tracking-tight text-4xl text-titlecolor w-full mb-4">
+            Search Results
+          </h1>
+          <p class="text-2xl" x-show="$store.search.query.lndq">
+            <span
+              x-show="$store.search.query.lndq"
+              x-text="$store.search.results.main.result.stats.totalNbHits"
+              data-testid="search-nb-hits"></span
+            >&nbspresults matching&nbsp<span
+              class="font-semibold"
+              x-text="`${'“' + $store.search.query.lndq + '”'}`"></span>
+          </p>
+          <p class="text-2xl" x-show="!$store.search.query.lndq">
+            <span
+              x-text="$store.search.results.main.result.stats.totalNbHits"></span
+            ><span>&nbspresults</span>
+          </p>
+        </div>
+      </template>
+      {{ partial "sections/search/list.html" }}
+    </div>
+  </template>
+  <template x-if="$store.nav.searchResults.open">
+    <div class="search-panel__filters bg-white">
+      {{ partial "sections/search/filters.html" . }}
+    </div>
+  </template>
+</div>

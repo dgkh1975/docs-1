@@ -1,21 +1,18 @@
 ---
 slug: install-and-configure-mysql-workbench-on-ubuntu
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Install and Configure MySQL Workbench on Ubuntu 16.04'
 description: 'This guide shows how to install and configure MySQL Workbench and includes a sample MySQL database for testing.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2017-08-08
 keywords: ["mysql", "mysql workbench", "mysql sample database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mysql/mysql-workbench/','/databases/mysql/install-and-configure-mysql-workbench-on-ubuntu/']
-modified: 2017-08-08
-modified_by:
-  name: Linode
-published: 2017-08-08
-title: 'Install and Configure MySQL Workbench on Ubuntu 16.04'
+aliases: []
 external_resources:
  - '[MySQL Workbench Manual](https://dev.mysql.com/doc/workbench/en/)'
- - '[Deploy MySQL Workbench for Database Administration](/docs/databases/mysql/deploy-mysql-workbench-for-database-administration/)'
+ - '[Deploy MySQL Workbench for Database Administration](/cloud/guides/deploy-mysql-workbench-for-database-administration)'
 tags: ["ubuntu","database","mysql"]
+deprecated: true
 ---
 
 MySQL Workbench is a feature-rich graphical tool used to model data, build SQL queries, manage MySQL servers, and more. This guide will show you how to install Workbench using the Ubuntu package manager.
@@ -24,11 +21,11 @@ MySQL Workbench is a feature-rich graphical tool used to model data, build SQL q
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  [Install VNC on Ubuntu](/docs/applications/remote-desktop/install-vnc-on-ubuntu-18-04) and connect to VNC from your desktop.
+3.  [Install VNC on Ubuntu](/cloud/guides/install-vnc-on-ubuntu-18-04) and connect to VNC from your desktop.
 
 4.  Update your system:
 
@@ -65,9 +62,9 @@ To open the preferences, click on `Edit`, then `Preferences` in the main menu:
 
 ## Optional: Load a Sample Database into MySQL Server
 
-See the guide on how to [Install a MySQL server on Ubuntu 14.04](/docs/databases/mysql/install-mysql-on-ubuntu-14-04/) or [Debian 8](/docs/databases/mysql/how-to-install-mysql-on-debian-8/) for more information on creating or logging into a MySQL server.
+See the guide on how to [Install a MySQL server on Ubuntu 14.04](/cloud/guides/install-mysql-on-ubuntu-14-04) or [Debian 8](/cloud/guides/how-to-install-mysql-on-debian-8) for more information on creating or logging into a MySQL server.
 
-1.  Access the MySQL server on your Linode [via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) and download the sample [Sakila database provided in the MySQL documentation](http://downloads.mysql.com/docs/sakila-db.tar.gz):
+1.  Access the MySQL server on your Linode [via SSH](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#connect-to-the-instance) and download the sample [Sakila database provided in the MySQL documentation](http://downloads.mysql.com/docs/sakila-db.tar.gz):
 
         wget http://downloads.mysql.com/docs/sakila-db.tar.gz
 
@@ -83,8 +80,8 @@ See the guide on how to [Install a MySQL server on Ubuntu 14.04](/docs/databases
 
     ![MySQL Workbench Connection](mysql-workbench-connection.png "MySQL Workbench Connection")
 
-    {{< note >}}
-The MySQL server default port should be `3306` on `l27.0.0.1`. If you wish to connect to another server with a different port, update the inputs accordingly. See [Deploy MySQL Workbench for Database Administration](/docs/databases/mysql/deploy-mysql-workbench-for-database-administration/) for more information.
+    {{< note respectIndent=false >}}
+The MySQL server default port should be `3306` on `l27.0.0.1`. If you wish to connect to another server with a different port, update the inputs accordingly. See [Deploy MySQL Workbench for Database Administration](/cloud/guides/deploy-mysql-workbench-for-database-administration) for more information.
 {{< /note >}}
 
 5.  Under **File**, select **Run SQL Script...**. Select `sakila-schema.sql` then click **Run**:

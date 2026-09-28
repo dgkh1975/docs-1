@@ -1,28 +1,25 @@
 ---
 slug: manage-web-content-with-joomla
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Manage Web Content with Joomla!'
 description: 'Using the Joomla! content management system to ease administration overhead for websites.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-01-22
+modified: 2011-04-19
 keywords: ["joomla", "cms", "content management systems"]
 tags: ["cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/cms-guides/joomla/','/websites/cms/joomla/manage-web-content-with-joomla/','/websites/cms/manage-web-content-with-joomla/']
-modified: 2011-04-19
-modified_by:
-  name: Linode
-published: 2010-01-22
-title: 'Manage Web Content with Joomla!'
+aliases: []
+deprecated: true
 ---
 
-Joomla is an advanced "content management system" (CMS) used to facilitate the easy creation and ongoing maintenance of dynamic websites. Comparable in some respects to other web applications like [Drupal](/docs/websites/cms/managing-web-content-with-drupal-7/) and [WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress/), Joomla also has advanced features that resemble web-development frameworks like [Ruby On Rails](/docs/development/ror/) and [Django](/docs/development/frameworks/). Deployed on top of the industry standard [LAMP Stack](/docs/web-servers/lamp/), Joomla is designed to be both easy to use and manage from the end-user's perspective and easy to administer and host.
+Joomla is an advanced "content management system" (CMS) used to facilitate the easy creation and ongoing maintenance of dynamic websites. Comparable in some respects to other web applications like [Drupal](/cloud/guides/managing-web-content-with-drupal-7) and [WordPress](/cloud/guides/how-to-install-and-configure-wordpress), Joomla also has advanced features that resemble web-development frameworks like [Ruby On Rails](/cloud/guides/development/ror) and [Django](/cloud/guides/development/frameworks). Deployed on top of the industry standard [LAMP Stack](/cloud/guides/web-servers/lamp), Joomla is designed to be both easy to use and manage from the end-user's perspective and easy to administer and host.
 
-Before installing Joomla, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Additionally, you will need to follow the [LAMP Guide](/docs/web-servers/lamp/) appropriate for the distribution you have deployed.
+Before installing Joomla, we assume that you have followed our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/cloud/guides/introduction-to-linux-concepts), [beginner's guide](https://techdocs.akamai.com/cloud-computing/docs/faqs-for-compute-instances) and [administration basics guide](/cloud/guides/linux-system-administration-basics). Additionally, you will need to follow the [LAMP Guide](/cloud/guides/web-servers/lamp) appropriate for the distribution you have deployed.
 
 ## Installing Prerequisites
 
-After installing the [LAMP stack](/docs/web-servers/lamp/), you must attend to a few additional prerequisites to complete this Joomla installation. Ensure that your distribution provides `wget` and `unzip` tools. In Debian- and Ubuntu-based systems, issue the following command:
+After installing the [LAMP stack](/cloud/guides/web-servers/lamp), you must attend to a few additional prerequisites to complete this Joomla installation. Ensure that your distribution provides `wget` and `unzip` tools. In Debian- and Ubuntu-based systems, issue the following command:
 
     apt-get update
     apt-get upgrade --show-upgraded

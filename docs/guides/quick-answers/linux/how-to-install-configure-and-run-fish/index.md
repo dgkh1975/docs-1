@@ -1,23 +1,21 @@
 ---
 slug: how-to-install-configure-and-run-fish
-author:
-  name: Angel Guarisma
-  email: docs@linode.com
-description: 'This guide will walk you through the basics of Fish'
+title: 'How to Install, Configure and Run the Fish Shell'
+description: 'This article gives you step-by-step instructions for installing and configuring Fish, the Friendly Interactive Shell, a replacement shell interface.'
+authors: ["Angel Guarisma"]
+contributors: ["Angel Guarisma"]
+published: 2017-07-18
 keywords: ["fish", "fish shell", "fish scripting", "bash", "command line shell", "The Friendly Interactive Shell"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-07-18
-modified: 2017-07-18
-modified_by:
-  name: Linode
-title: 'How to Install, Configure and Run the Fish Shell'
 external_resources:
 - '[Fish Shell](https://fishshell.com/)'
 - '[Fish Shell Tutorial](https://geowarin.github.io/the-missing-fish-shell-tutorial.html)'
 - '[Arch Wiki Fish Entry](https://wiki.archlinux.org/index.php/Fish)'
 - '[Fish Cookbook](https://github.com/jbucaran/fish-shell-cookbook#how-to-find-my-current-location-in-fish)'
 tags: ["linux"]
-aliases: ['/quick-answers/linux/how-to-install-configure-and-run-fish/']
+aliases: []
+deprecated: true
+
 ---
 
 ![How to Install, Configure, and Run the Fish Shell](fish_banner.jpg)
@@ -42,7 +40,7 @@ The configuration file for Fish is located at: `~/.config/fish/config.fish`. You
 
 ![Customized Fish Shell Configuration File](fish_config.png)
 
-## Regarding Fish
+## Use Fish
 
 Fish is similar to other shells: you type commands followed by arguments.
 
@@ -61,13 +59,8 @@ However, in Fish, you chain commands with `;`, instead of `&&`:
 
 If you can't function without `!!` and `&&`, check [this](https://github.com/fish-shell/fish-shell/wiki/Bash-Refugees) repo out for a solution.
 
-
-## Use Fish
-
-Fish boasts a full-featured scripting language. You can use scripts written in Fish to do anything you would do with a scripting language, and even some cooler [things](https://github.com/onodera-punpun/neet), like managing your anime/drama series.
-
-
 ### Functions
+
 Fish does not support aliasing. Instead Fish uses `functions`. Typing `functions` into Fish will output a list of functions that exist by default:
 
 
@@ -103,7 +96,7 @@ For example, if you have a script that prints numbers 1-10:
 
 Using `bash -c`, you can take that same script as a string and run it without exiting Fish.
 
-![fish_script](fish_script.png)
+![Screenshot of terminal](fish_script.png)
 
 
 ## Next Steps

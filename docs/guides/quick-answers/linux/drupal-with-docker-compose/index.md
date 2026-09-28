@@ -1,22 +1,17 @@
 ---
 slug: drupal-with-docker-compose
-author:
-  name: Nathan Melehan
-  email: nmelehan@linode.com
+title: Install Drupal with Docker Compose
+description: 'This guide provides you with step-by-step instructions for installing and configuring Drupal, a popular content management system, using Docker Compose.'
+authors: ["Nathan Melehan"]
+contributors: ["Nathan Melehan"]
+published: 2018-06-29
 keywords: ["Docker", "Docker Compose", "Drupal"]
 tags: ["postresql","docker","drupal","linux"]
-description: This guide explains how to set up Drupal with Docker Compose.
-og_description: This guide explains how to set up Drupal with Docker Compose.
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-06-29
-modified: 2018-06-29
-modified_by:
-  name: Linode
-title: Install Drupal with Docker Compose
 external_resources:
   - '[Official Drupal Image on Docker Hub](https://hub.docker.com/_/drupal/)'
   - '[Overview of Docker Compose | Docker Documentation](https://docs.docker.com/compose/overview/)'
-aliases: ['/quick-answers/linux/drupal-with-docker-compose/']
+aliases: []
 ---
 
 ## What Are Docker and Docker Compose?
@@ -39,11 +34,11 @@ Using the Drupal and PostgreSQL images from Docker Hub offers the following bene
 
 ### Install Docker
 
-{{< content "install-docker-ce" >}}
+{{% content "installing-docker-shortguide" %}}
 
 ### Install Docker Compose
 
-{{< content "install-docker-compose" >}}
+{{% content "install-docker-compose" %}}
 
 ## Set Up Drupal
 
@@ -144,4 +139,4 @@ The `docker-compose.yml` specifies the `latest` version of the Drupal image, so 
 
 ## Next Steps
 
-More extensive documentation on Docker is available in the [Containers](/docs/applications/containers/) section of the Linode Guides & Tutorials site.
+More extensive documentation on Docker is available in the [Containers](/cloud/guides/applications/containers) section of the Linode Guides & Tutorials site.

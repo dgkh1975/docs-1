@@ -1,26 +1,20 @@
 ---
 slug: what-is-serverless-computing
-author:
-  name: Andy Patrizio
-  email: andy@andypatrizio.com
-description: 'Serverless computing is an application deployment architecture where a cloud provider supplies compute resources on-demand. This allows developers to focus on their application code and leave server management to the service provider.'
-og_description:  'Serverless computing is an application deployment architecture where a cloud provider supplies compute resources on-demand. This allows developers to focus on their application code and leave server management to the service provider.'
+title: 'What is Serverless Computing?'
+description: 'Serverless computing is an application deployment architecture where cloud resources are supplied on-demand.  Learn how it works and why people use it.'
+og_description:  'Serverless computing is an application deployment architecture where cloud resources are supplied on-demand.  Learn how it works and why people use it.'
+authors: ["Andy Patrizio"]
+contributors: ["Andy Patrizio"]
+published: 2020-01-29
 keywords: ['serverless computing']
 tags: ["linux", "container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-01-29
-modified_by:
-  name: Linode
-title: 'What is Serverless Computing?'
-h1_title: 'What is Serverless Computing?'
-contributor:
-  name: Andy Patrizio
 ---
 Serverless computing is a type of application deployment architecture that allows developers to write an application that is executed on-demand. When the application is no longer needed system resources are not allocated to the app. You don't need to set up a server to host your application, because this is typically managed by a service provider. The usage of the term *serverless* can be misleading because it implies that no servers are involved. However, servers are definitely involved; but the terminology points to the fact the servers are not something developers need to worry about when using this approach to development.
 
 Serverless applications are often referred to as *functions*. That is because the applications are very often simple applets that do one thing, a single function. They are not comprised of complex functions like server-side applications.
 
-In many ways, serverless computing (often shortened to just *serverless*) is a natural evolution of [Platform-as-a-Service (PaaS)](/docs/guides/what-is-cloud-computing/#cloud-computing-models). Whereas Infrastructure-as-a-Service (IaaS) is the basic cloud service that offers storage, networking, and virtualization, PaaS is an operating system plus a development tool environment for building applications. All back-end operations are handled by the cloud provider so the developer only has to worry about their application. To learn more about IaaS and Paas, you can view our guide [What is Cloud Computing?](https://www.linode.com/what-is-cloud-computing/) or our [Glossary of Cloud Computing Terms](https://www.linode.com/cloud-computing-terms/).
+In many ways, serverless computing (often shortened to just *serverless*) is a natural evolution of [Platform-as-a-Service (PaaS)](/cloud/guides/what-is-cloud-computing#cloud-computing-models). Whereas Infrastructure-as-a-Service (IaaS) is the basic cloud service that offers storage, networking, and virtualization, PaaS is an operating system plus a development tool environment for building applications. All back-end operations are handled by the cloud provider so the developer only has to worry about their application. To learn more about IaaS and Paas, you can view our guide [What is Cloud Computing?](https://www.linode.com/what-is-cloud-computing/) or our [Glossary of Cloud Computing Terms](https://www.linode.com/cloud-computing-terms/).
 
 Serverless is similar to PaaS. It offers a fully-managed platform that frees developers from the need to maintain a server and to deal with system resources. This means the application is no longer tied to a specific server; the software runs on whatever server is available.
 

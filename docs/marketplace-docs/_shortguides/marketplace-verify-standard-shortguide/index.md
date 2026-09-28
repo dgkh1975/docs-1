@@ -1,0 +1,12 @@
+---
+# Shortguide: How to verify that the marketplace app has been successfully installed.
+
+headless: true
+show_on_rss_feed: false
+authors: ["Akamai"]
+contributors: ["Akamai"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+description: 'Quick Deploy Apps verification shortguide'
+---
+
+To verify that the app has been fully installed, see [Get Started with Akamai Quick Deploy Apps > Verify Installation](/cloud/marketplace-docs/get-started#verify-installation). Once installed, follow the instructions within the [Getting Started After Deployment](#getting-started-after-deployment) section to access the application and start using it.

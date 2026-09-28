@@ -1,31 +1,26 @@
 ---
 slug: nginx-and-perlfastcgi-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Nginx and Perl-FastCGI on Ubuntu 9.10 (Karmic)'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-16
+modified: 2011-05-17
 keywords: ["nginx", "fastscgi perl", "nginx ubuntu 9.10", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-9-10-karmic/','/websites/nginx/nginx-and-perlfastcgi-on-ubuntu-9-10-karmic/','/web-servers/nginx/perl-fastcgi/ubuntu-9-10-karmic/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2009-12-16
-title: 'Nginx and Perl-FastCGI on Ubuntu 9.10 (Karmic)'
+aliases: []
 relations:
     platform:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your Ubuntu 9.10 (Karmic) Linode.
 
-It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). These steps should be performed via a root login to your Linode over SSH.
 
 ## Basic System Configuration
 
@@ -116,11 +111,11 @@ Issue the following commands to enable the site:
     ln -s /etc/nginx/sites-available/www.example.com
     /etc/init.d/nginx restart
 
-You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/platform/manager/dns-manager/) pointing your domain name to your Linode's IP address (found on the **Networking** tab in the [Linode Cloud Manager](http://cloud.linode.com//)).
+You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](https://techdocs.akamai.com/cloud-computing/docs/dns-manager) pointing your domain name to your Linode's IP address (found on the **Networking** tab in the [Linode Cloud Manager](http://cloud.linode.com/)).
 
 ## Configure spawn-fcgi
 
-Install the Perl module for FastCGI using the [CPAN Minus](/docs/development/perl/manage-cpan-modules-with-cpan-minus/) interface for CPAN. Install CPAN Minus and FCGI by issuing the following sequence of commands:
+Install the Perl module for FastCGI using the [CPAN Minus](/cloud/guides/manage-cpan-modules-with-cpan-minus) interface for CPAN. Install CPAN Minus and FCGI by issuing the following sequence of commands:
 
     cd /opt/
     curl https://github.com/miyagawa/cpanminus/raw/master/cpanm > cpanm
@@ -132,8 +127,8 @@ Install the Perl module for FastCGI using the [CPAN Minus](/docs/development/per
 Issue the following command sequence to download the FastCGI wrapper script (credit: [Denis S. Filimonov](http://www.ruby-forum.com/topic/145858)) and an init script to control the FastCGI process, set the permissions, launch the wrapper for the first time, and ensure that FastCGI launches at startup:
 
     cd /opt/
-    wget -O fastcgi-wrapper http://www.linode.com/docs/assets/638-fastcgi-wrapper.sh
-    wget -O init-deb.sh http://www.linode.com/docs/assets/637-init-deb.sh
+    wget -O fastcgi-wrapper 638-fastcgi-wrapper.sh
+    wget -O init-deb.sh 637-init-deb.sh
     mv /opt/fastcgi-wrapper /usr/bin/fastcgi-wrapper.pl
     mv /opt/init-deb.sh /etc/init.d/perl-fastcgi
     chmod +x /usr/bin/fastcgi-wrapper.pl
@@ -143,7 +138,7 @@ Issue the following command sequence to download the FastCGI wrapper script (cre
 
 ## Test Perl with FastCGI
 
-Create a file called "test.pl" in your site's "public\_html" directory with the following contents:
+Create a file called "test.pl" in your site's `public_html` directory with the following contents:
 
 {{< file "/srv/www/www.example.com/public\\_html/test.pl" perl >}}
 #!/usr/bin/perl
@@ -177,5 +172,5 @@ You may wish to consult the following resources for additional information on th
 - [The NGINX Homepage](http://nginx.org/)
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [Perl Documentation](http://perldoc.perl.org/)
-- [Installing NGINX on Ubuntu 9.10 (Karmic)](/docs/web-servers/nginx/installation/ubuntu-9-10-karmic)
-- [Basic NGINX Configuration](/docs/web-servers/nginx/how-to-configure-nginx/)
+- [Installing NGINX on Ubuntu 9.10 (Karmic)](/cloud/guides/websites-with-nginx-on-ubuntu-9-10-karmic)
+- [Basic NGINX Configuration](/cloud/guides/how-to-configure-nginx)

@@ -1,21 +1,14 @@
 ---
 slug: backup-mariadb-mysql-to-object-storage-with-restic
-author:
-  name: Andy Heathershaw
-  email: andy@andysh.uk
+title: "Backup MariaDB or MySQL Databases to Linode Object Storage with Restic"
+title_meta: "Backup MariaDB Databases to Linode Object Storage with Restic"
 description: 'Restic is a backup utility written in Go. This guide shows how to configure Restic to backup your MariaDB (or MySQL) databases onto Linode Object Storage.'
-og_description: 'Restic is a backup utility written in Go. This guide shows how to configure Restic to backup your MariaDB (or MySQL) databases onto Linode Object Storage.'
+authors: ["Andy Heathershaw"]
+contributors: ["Andy Heathershaw"]
+published: 2020-12-03
 keywords: ['mariadb','mysql','backup','backups','restic','off-site backups','Object Storage']
 tags: ['mariadb', 'mysql', 'automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2020-12-03
-modified_by:
-  name: Andy Heathershaw
-title: "Backup MariaDB Databases to Linode Object Storage with Restic"
-h1_title: "Backup MariaDB or MySQL Databases to Linode Object Storage with Restic"
-contributor:
-  name: Andy Heathershaw
-  link: https://andysh.uk
 external_resources:
 - '[mysqldump - MariaDB Knowledge Base](https://mariadb.com/kb/en/mysqldump/)'
 - '[Preparing a new Restic repository](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html)'
@@ -36,20 +29,22 @@ MariaDB is a fork of MySQL. Where you see a reference to *MariaDB* in this guide
 {{< /note >}}
 
 {{< note >}}
-The steps in this guide require root privileges, and commands are run with `sudo` unless otherwise noted. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide require root privileges, and commands are run with `sudo` unless otherwise noted. For more information on privileges, see our [Users and Groups](/cloud/guides/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1. Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](https://techdocs.akamai.com/cloud-computing/docs/getting-started) and [Creating a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/create-a-compute-instance) guides.
 
-1. Install MariaDB on your Linode by following the [How to Install MariaDB](/docs/databases/mariadb/) guide that is appropriate for your Linode's distribution.
+1.  Follow our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Create an Object Storage bucket to hold your backup repository. Follow the [Create a Bucket](/docs/platform/object-storage/how-to-use-object-storage/#create-a-bucket) section of the [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide if you do not already have one.
+1. Install MariaDB on your Linode by following the [How to Install MariaDB](/cloud/guides/databases/mariadb) guide that is appropriate for your Linode's distribution.
 
-    {{< content "object-storage-cancellation-shortguide" >}}
+1.  Create an Object Storage bucket to hold your backup repository. Follow the [Create a Bucket](https://techdocs.akamai.com/cloud-computing/docs/create-and-manage-buckets) guide if you do not already have one.
 
-1.  [Generate Object Storage access keys](/docs/guides/how-to-use-object-storage/#generate-a-key-pair).
+    {{% content "object-storage-cancellation-shortguide" %}}
+
+1.  [Generate Object Storage access keys](https://techdocs.akamai.com/cloud-computing/docs/manage-access-keys).
 
 1. Ensure your Linode has the `wget` and `bzip2` utilities installed. Install them with the following commands:
 
@@ -63,11 +58,11 @@ The steps in this guide require root privileges, and commands are run with `sudo
 
 ## Install Restic
 
-{{< content "install-restic-shortguide" >}}
+{{% content "install-restic-shortguide" %}}
 
 ## Create the Restic Repository
 
-{{< content "create-restic-repository-shortguide" >}}
+{{% content "create-restic-repository-shortguide" %}}
 
 ## Backup All Databases
 
@@ -172,7 +167,7 @@ System Cron jobs exist as entries in the `/etc/crontab` file. Open your systems 
 
     sudo crontab -e
 
-Add a line pointing to your backup script. This example runs the backup every hour, on the hour. See the [Schedule tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) article for additional scheduling options.
+Add a line pointing to your backup script. This example runs the backup every hour, on the hour. See the [Schedule tasks with Cron](/cloud/guides/schedule-tasks-with-cron) article for additional scheduling options.
 
     0 * * * * /usr/local/bin/backup_mariadb > /tmp/mariadb-backup-log.txt 2>&1
 
@@ -238,7 +233,7 @@ It can get tedious typing out the arguments to the Restic command. To make life 
 Because the credentials that Restic uses were created under the root user's home folder, the example alias in this section only works for the root user.
 {{< /note >}}
 
-In your `root` user's `.profile` file, add the lines in the example. For example, on an Ubuntu system this file is located in `/root/.profile`. To learn more about creating reusable aliases, see the [How to Add the Linux alias Command in the .bashrc File](/docs/guides/how-to-add-linux-alias-command-in-bashrc-file/) guide.
+In your `root` user's `.profile` file, add the lines in the example. For example, on an Ubuntu system this file is located in `/root/.profile`. To learn more about creating reusable aliases, see the [How to Add the Linux alias Command in the .bashrc File](/cloud/guides/how-to-add-linux-alias-command-in-bashrc-file) guide.
 
     source /root/restic_params
     alias myrestic='restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw'
@@ -249,7 +244,7 @@ After logging out of your system and back in again, you can run restic using you
 
 ### Restore a Backup
 
-Backups are not useful if you cannot restore them. It's a good idea to test out your backups once in a while. To restore the latest useable backup from Restic, run the `restore latest` command:
+Backups are not useful if you cannot restore them. It's a good idea to test out your backups once in a while. To restore the latest usable backup from Restic, run the `restore latest` command:
 
     restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw restore latest -t /root
 

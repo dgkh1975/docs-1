@@ -1,19 +1,15 @@
 ---
 slug: how-to-add-linux-alias-command-in-bashrc-file
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Permanent Linux alias commands are saved to the shell configuration file and available for every new session you create. Learn how to save permanent aliases in the Bash .bashrc configuration file.'
-og_description: 'Permanent Linux alias commands are saved to the shell configuration file and available for every new session you create. Learn how to save permanent aliases in the Bash .bashrc configuration file.'
-keywords: ["alias command bashrc"]
-aliases: ['/quick-answers/linux/how-to-add-linux-alias-command-in-bashrc-file/']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-11-06
-modified_by:
-  name: Heather Zoppetti
+title: Adding the Linux alias Command in the .bashrc File
+title_meta: "How to Add the Linux alias Command in the .bashrc File"
+description: "Permanent Linux alias commands are saved to the shell configuration file for every new session you create. Here''s how that process works."
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2020-11-17
-title: How to Add the Linux alias Command in the .bashrc File
-h1_title: Adding the Linux alias Command in the .bashrc File
+modified: 2020-11-06
+keywords: ["alias command bashrc"]
+aliases: []
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["linux"]
 ---
 
@@ -28,7 +24,7 @@ This guide covers two ways to alias commands:
 
 There are two ways to create aliases for your use, temporary and permanent. Temporary aliases are only available to use until you close your current terminal session. Permanent aliases are saved to the shell configuration file and are available for every new session you create.
 
-Again, temporary aliases are only good for the current terminal session. Once you close that session, they are no longer available. To make them permanent, you can save your aliases in the shell configuration file. You can read more about temporary aliases in our general guide on aliases, [How to Use the Linux alias Command](/docs/guides/how-to-use-the-linux-alias-command/).
+Again, temporary aliases are only good for the current terminal session. Once you close that session, they are no longer available. To make them permanent, you can save your aliases in the shell configuration file. You can read more about temporary aliases in our general guide on aliases, [How to Use the Linux alias Command](/cloud/guides/how-to-use-the-linux-alias-command).
 
 In the Bash shell, you can save aliases directly in a configuration file. There are several files you can save aliases to:
 
@@ -127,7 +123,7 @@ You can also write a Bash function like this:
         command2
     }
 
-To use the function with arguments, the syntax is function_name followed by arguments separated with spaces.
+To use the function with arguments, the syntax is `function_name` followed by arguments separated with spaces.
 
 Let's make a simple function that changes into a specified directory and then lists the directory contents.
 
@@ -154,4 +150,4 @@ Then run the function with the following syntax:
 
 You are changed into that directory and get a directory listing with common options with a single command.
 
-These are a simplistic examples meant to illustrate what you can achieve with aliasing. Bash functions are powerful and allow you to do much more complex operations. For more on Bash shell scripting, see the guide series starting with [Introduction to Bash Shell Scripting](/docs/guides/intro-bash-shell-scripting/).
+These are a simplistic examples meant to illustrate what you can achieve with aliasing. Bash functions are powerful and allow you to do much more complex operations. For more on Bash shell scripting, see the guide series starting with [Introduction to Bash Shell Scripting](/cloud/guides/intro-bash-shell-scripting).

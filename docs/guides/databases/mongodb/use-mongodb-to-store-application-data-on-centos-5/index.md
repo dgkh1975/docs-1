@@ -1,29 +1,26 @@
 ---
 slug: use-mongodb-to-store-application-data-on-centos-5
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Install MongoDB for use in application development on CentOS 5.'
+title: Use MongoDB to Store Application Data on CentOS 5
+description: 'MongoDB is a database engine that provides access to non-relational key-value databases. This guide provides you instructions for installing it on CentOS 5.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-03-24
+modified: 2011-04-29
 keywords: ["nosql", "database", "mongodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mongodb/centos-5/','/databases/mongodb/use-mongodb-to-store-application-data-on-centos-5/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-03-24
-title: Use MongoDB to Store Application Data on CentOS 5
+aliases: []
 relations:
     platform:
         key: use-mongodb-store-app-data
         keywords:
             - distribution: CentOS 5
 tags: ["nosql","database","centos"]
+deprecated: true
 ---
 
 MongoDB is a database engine that provides access to non-relational key-value databases. It is part of the growing NoSQL movement, which seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON-based output format and specialized language specific bindings that make it particularly attractive for use in custom application development. Although MongoDB is a relatively new project and has not yet been packaged by most major operating system distributions, the software has been used in a number of large scale [production deployments](http://www.mongodb.org/display/DOCS/Production+Deployments) such as "GitHub", "SourceForge", and "DISQUS".
 
-Before installing MongoDB, it is assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before installing MongoDB, it is assume that you have followed our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/cloud/guides/introduction-to-linux-concepts), [beginner's guide](https://techdocs.akamai.com/cloud-computing/docs/faqs-for-compute-instances) and [administration basics guide](/cloud/guides/linux-system-administration-basics).
 
 ## Installing MongoDB
 
@@ -71,8 +68,8 @@ In typical installations, the MongoDB server process is controlled using command
 Issue the following sequence of commands to download the scripts and set the permissions on these files:
 
     cd /opt/bin/
-    wget -O mongodb-start http://www.linode.com/docs/assets/625-mongodb-start.sh
-    wget -O mongodb-stop http://www.linode.com/docs/assets/626-mongodb-stop.sh
+    wget -O mongodb-start 625-mongodb-start.sh
+    wget -O mongodb-stop 626-mongodb-stop.sh
     chmod +x *
 
 Review the contents of the `mongodb-start` and `mongodb-stop` and modify these files if your deployment requires an alternate initialization procedure. From now on, issuing `/opt/bin/mongodb-start` or `/opt/bin/mongodb-stop` will start or stop the MongoDB process, respectively. The behavior of the `mongod` process is controlled by the values set in `/opt/config/mongodb`.
@@ -110,7 +107,7 @@ Setting the `fork` option to equal `true` configures MongoDB to run as a daemon 
 
 We've also created a *very* basic "init script" as a wrapper around the `mongodb-start` and `mongo-stop` scripts described above. You will still need to modify and manage the configuration of your MongoDB server in the files above. This script only provides a means for ensuring that MongoDB will start at boot. Issue the following commands:
 
-    wget -O init-rpm.sh http://www.linode.com/docs/assets/624-mongodb-init-rpm.sh
+    wget -O init-rpm.sh 624-mongodb-init-rpm.sh
     mv init-rpm.sh /etc/init.d/mongodb
     chmod +x /etc/init.d/mongodb
     chkconfig --add mongodb

@@ -1,18 +1,14 @@
 ---
 slug: set-up-a-zipkin-server
-author:
-  name: Luis Cortes
-  email: docs@linode.com
+title: 'Set Up a Zipkin Server'
 description: 'This guide shows you how to use the Zipkin tracking system to collect and search timing data in order to identify latency problems on your website.'
+authors: ["Luis Cortés"]
+contributors: ["Luis Cortés"]
+published: 2017-09-28
 keywords: ["zipkin", "tracking"]
 tags: ["statistics","fedora","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/uptime/set-up-a-zipkin-server-with-sample-website-tracking/','/uptime/set-up-a-zipkin-server/','/uptime/analytics/set-up-a-zipkin-server/']
-modified: 2017-09-28
-modified_by:
-  name: Luis Cortes
-published: 2017-09-28
-title: 'Set Up a Zipkin Server'
+aliases: []
 external_resources:
  - '[Official ZipKin Documentation](http://zipkin.io/)'
 ---
@@ -27,9 +23,9 @@ While the official documentation offers [three different ways of installing Zipk
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2. This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access, and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for a Zipkin server.
+2. This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) to create a standard user account, harden SSH access, and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for a Zipkin server.
 
 3. Create two Linodes and have access to another device:
     1.  One Linode to act as the Zipkin server.
@@ -148,9 +144,9 @@ The default Fedora 26 firewall rules block all ports as a safety precaution. Cre
 
         pip2 install py_zipkin bottle requests
 
-4. Download the python script [website.py](/docs/assets/scripts/website.py) which has been commented to show the added Zipkin code:
+4. Download the python script [website.py](website.py) which has been commented to show the added Zipkin code:
 
-        wget https://github.com/linode/docs/assets/scripts/website.py
+        wget website.py
 
 ### Configure Webservice
 

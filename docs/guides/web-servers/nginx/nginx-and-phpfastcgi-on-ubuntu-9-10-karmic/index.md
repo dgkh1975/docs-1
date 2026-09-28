@@ -1,30 +1,26 @@
 ---
 slug: nginx-and-phpfastcgi-on-ubuntu-9-10-karmic
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Nginx and PHP-FastCGI on Ubuntu 9.10 (Karmic)'
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Ubuntu 9.10 (Karmic).'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-12-14
+modified: 2011-05-17
 keywords: ["nginx", "nginx ubuntu 9.10", "nginx fastcgi", "nginx php"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/php-fastcgi/ubuntu-9-10-karmic/','/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-9-10-karmic/','/web-servers/nginx/nginx-and-phpfastcgi-on-ubuntu-9-10-karmic/']
-modified: 2011-05-17
-modified_by:
-  name: Linode
-published: 2009-12-14
-expiryDate: 2013-05-17
-title: 'Nginx and PHP-FastCGI on Ubuntu 9.10 (Karmic)'
-deprecated: true
+aliases: []
 relations:
     platform:
         key: nginx-php-fastcgi
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your Ubuntu 9.10 Linode.
 
-It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). These steps should be performed via a root login to your Linode over SSH.
 
 ## Basic System Configuration
 
@@ -132,7 +128,7 @@ After reviewing your configuration for potential security issues, issue the foll
     ln -s /etc/nginx/sites-available/www.example.com
     /etc/init.d/nginx restart
 
-You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (PHP will not work yet). Please note that this will require an [entry in DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address.
+You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (PHP will not work yet). Please note that this will require an [entry in DNS](https://techdocs.akamai.com/cloud-computing/docs/common-dns-configurations) pointing your domain name to your Linode's IP address.
 
 ## Install spawn-fcgi
 
@@ -149,10 +145,10 @@ Visit the [spawn-fcgi project page](http://redmine.lighttpd.net/projects/spawn-f
 Issue the following command sequence to download scripts to control spawn-fcgi and php-fastcgi, set privileges, make the init script run at startup, and launch it for the first time:
 
     cd /opt
-    wget -O php-fastcgi-deb.sh http://www.linode.com/docs/assets/644-php-fastcgi-deb.sh
+    wget -O php-fastcgi-deb.sh 644-php-fastcgi-deb.sh
     mv php-fastcgi-deb.sh /usr/bin/php-fastcgi
     chmod +x /usr/bin/php-fastcgi
-    wget -O php-fastcgi-init-deb.sh http://www.linode.com/docs/assets/643-php-fastcgi-init-deb.sh
+    wget -O php-fastcgi-init-deb.sh 643-php-fastcgi-init-deb.sh
     mv php-fastcgi-init-deb.sh /etc/init.d/php-fastcgi
     chmod +x /etc/init.d/php-fastcgi
     update-rc.d php-fastcgi defaults
@@ -160,7 +156,7 @@ Issue the following command sequence to download scripts to control spawn-fcgi a
 
 ## Test PHP with FastCGI
 
-Create a file called "test.php" in your site's "public\_html" directory with the following contents:
+Create a file called "test.php" in your site's `public_html` directory with the following contents:
 
 {{< file "/srv/www/www.example.com/public\_html/test.php" >}}
 <?php echo phpinfo(); ?>
@@ -175,5 +171,5 @@ You may wish to consult the following resources for additional information on th
 - [The NGINX Homepage](http://nginx.org/)
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [PHP Documentation](http://www.php.net/docs.php)
-- [Installing Nginx on Ubuntu 9.10 (Karmic)](/docs/web-servers/nginx/installation/ubuntu-9-10-karmic)
-- [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Installing Nginx on Ubuntu 9.10 (Karmic)](/cloud/guides/websites-with-nginx-on-ubuntu-9-10-karmic)
+- [Basic NGINX Configuration](/cloud/guides/how-to-configure-nginx)

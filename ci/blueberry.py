@@ -109,8 +109,8 @@ def valid_alias(file_yaml, **kwargs):
         if 'deprecated' not in file_yaml or file_yaml['deprecated'] is False:
             errors = []
             for alias in file_yaml['aliases']:
-                if not alias.endswith('/'):
-                    errors.append(f"{alias} should end with a slash (/).")
+                if alias.endswith('/'):
+                    errors.append(f"{alias} should not end with a slash (/).")
             if errors:
                 return str(kwargs.get('filename')), '\n'.join(errors)
             else:
@@ -320,7 +320,7 @@ class TestManager(object):
     # TODO:
     # Gracefully handle non-existent filepath
 
-    def __init__(self, input_dir='docs/', ignore_paths=['docs/api/', 'docs/headless/', 'docs/products/'], **kwargs):
+    def __init__(self, input_dir='docs/', ignore_paths=['docs/api/', 'docs/headless/', 'docs/products/', 'docs/reference-architecture/', 'docs/release-notes/', 'docs/marketplace-docs/'], **kwargs):
         self.input_dir = input_dir
         self.files = find_files(path=input_dir, ignore_paths=ignore_paths, recursive=True)
 

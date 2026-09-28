@@ -1,21 +1,18 @@
 ---
 slug: download-resources-from-the-command-line-with-wget
-author:
-  name: Linode
-  email: docs@linode.com
-description: Use wget to download files on the command line
+title: Download Resources from the Command Line with wget
+description: 'This guide provides you with step-by-step instructions for using the wget command to download files from the Internet or your network via the command line interface.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-10-25
+modified: 2018-05-18
 keywords: ["wget", "command line", "linux common commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/tools/download-resources-from-the-command-line-with-wget/','/linux-tools/common-commands/wget/']
-modified: 2018-05-18
-modified_by:
-  name: Linode
-published: 2010-10-25
-title: Download Resources from the Command Line with wget
+aliases: []
 tags: ["linux"]
 ---
 
-![Banner_image](Download_Resources_from_the_Command_Line_with_wget_smg.jpg)
+![Header image](Download_Resources_from_the_Command_Line_with_wget_smg.jpg "Download Resources from the Command Line with wget")
 
 ## What is wget?
 
@@ -29,10 +26,10 @@ The `wget` command uses the following basic syntax:
 
 When used without options, `wget` will download the file specified by the `[URL]` to the current directory:
 
-    wget https://www.linode.com/docs/assets/695-wget-example.txt
+    wget 695-wget-example.txt
 
 {{< output >}}
---2018-05-18 19:40:17--  https://www.linode.com/docs/assets/695-wget-example.txt
+--2018-05-18 19:40:17--  695-wget-example.txt
 Resolving www.linode.com (www.linode.com)... 2600:3c00::12, 2600:3c00::32, 2600:3c00::22, ...
 Connecting to www.linode.com (www.linode.com)|2600:3c00::12|:443... connected.
 HTTP request sent, awaiting response... 200 OK
@@ -67,11 +64,11 @@ uCf3HehndIeRghOAmXPc61cfUrHZ+MEqXYmSoKw4E0hI7GWXkwAyByCFPBVB9Fbe
 
 The `-O` option controls the location and name of the file where `wget` writes the downloaded content. To download the file as `example.txt` and save it to the `mydir` directory:
 
-    wget -O mydir/example.txt https://www.linode.com/docs/assets/695-wget-example.txt
+    wget -O mydir/example.txt 695-wget-example.txt
 
 If you specify the file name as `-` as in `wget -O -`, `wget` will output the downloaded file to the terminal. Add the `-q` flag to suppress the status output:
 
-    wget -q -O - https://www.linode.com/docs/assets/695-wget-example.txt
+    wget -q -O - 695-wget-example.txt
 
 {{< output >}}
 This is an example resource for the `wget` document
@@ -90,10 +87,10 @@ uCf3HehndIeRghOAmXPc61cfUrHZ+MEqXYmSoKw4E0hI7GWXkwAyByCFPBVB9Fbe
 
 To view the HTTP header information attached to the resource, use the `-S` flag. Header information is often helpful for diagnosing issues with web server configuration.
 
-    wget -S https://www.linode.com/docs/assets/695-wget-example.txt
+    wget -S 695-wget-example.txt
 
 {{< output >}}
---2018-05-18 20:19:30--  https://www.linode.com/docs/assets/695-wget-example.txt
+--2018-05-18 20:19:30--  695-wget-example.txt
 Resolving www.linode.com (www.linode.com)... 2600:3c00::22, 2600:3c00::12, 2600:3c00::32, ...
 Connecting to www.linode.com (www.linode.com)|2600:3c00::22|:443... connected.
 HTTP request sent, awaiting response...
@@ -119,7 +116,7 @@ Saving to: ‘695-wget-example.txt.5’
 
 To view only the headers, add the `-q` flag as before to suppress the status output:
 
-    wget -Sq https://www.linode.com/docs/assets/695-wget-example.txt
+    wget -Sq 695-wget-example.txt
 
 {{< output >}}
 HTTP/1.1 200 OK
@@ -167,7 +164,7 @@ The options `-r -l 3 -k -p -H` have the following functionality:
 
 Use the `-b` option to background the download process if you do not want `wget` to occupy your terminal process.
 
-    wget -b https://www.linode.com/docs/assets/695-wget-example.txt
+    wget -b 695-wget-example.txt
 
 {{< output >}}
 Continuing in background, pid 953.

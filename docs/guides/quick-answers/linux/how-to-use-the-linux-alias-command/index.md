@@ -1,19 +1,15 @@
 ---
 slug: how-to-use-the-linux-alias-command
-author:
-  name: Linode
-  email: docs@linode.com
+title: Using the Linux alias Command
+title_meta: How to Use the Linux alias Command
 description: 'Save time with the Linux "alias" command by creating customizable shortcuts.'
-og_description: 'Save time with the Linux "alias" command by creating customizable shortcuts.'
-keywords: ["linux alias command"]
-aliases: ['/quick-answers/linux/how-to-use-the-linux-alias-command/']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-11-06
-modified_by:
-  name: Heather Zoppetti
+authors: ["Linode"]
+contributors: ["Linode"]
 published: 2020-11-17
-title: How to Use the Linux alias Command
-h1_title: Using the Linux alias Command
+modified: 2020-11-06
+keywords: ["linux alias command"]
+aliases: []
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 tags: ["linux"]
 ---
 
@@ -109,10 +105,9 @@ For example, to remove the `update` temporary alias from [above](#create-a-tempo
 To remove all aliases:
 
     unalias -a
-
 {{< note >}}
 Removing all aliases also removes the system default aliases.
-{{</ note >}}
+{{< /note >}}
 
 ## Helpful Examples
 
@@ -141,4 +136,4 @@ Here are some helpful `alias` examples that you may wish to save:
 
 ## Next Steps
 
-To learn more about saving permanent aliases in Bash configuration files as well as using arguments in aliases utilizing Bash functions, see the guide [How to Add the Linux alias Command in the .bashrc File](/docs/guides/how-to-add-linux-alias-command-in-bashrc-file/).
+To learn more about saving permanent aliases in Bash configuration files as well as using arguments in aliases utilizing Bash functions, see the guide [How to Add the Linux alias Command in the .bashrc File](/cloud/guides/how-to-add-linux-alias-command-in-bashrc-file).

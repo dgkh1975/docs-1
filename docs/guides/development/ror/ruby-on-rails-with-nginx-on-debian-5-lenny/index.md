@@ -1,31 +1,28 @@
 ---
 slug: ruby-on-rails-with-nginx-on-debian-5-lenny
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Ruby on Rails with Nginx on Debian 5 (Lenny)'
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Debian 5 (Lenny) operating system.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2009-08-21
+modified: 2011-08-22
 keywords: ["ruby on rails", "rails on debian", "ruby on nginx", "rails apps"]
 tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/ror/ruby-on-rails-with-nginx-on-debian-5-lenny/','/websites/ror/ruby-on-rails-with-nginx-on-debian-5-lenny/','/frameworks/ruby-on-rails-nginx/debian-5-lenny/']
-modified: 2011-08-22
-modified_by:
-  name: Linode
-published: 2009-08-21
-title: 'Ruby on Rails with Nginx on Debian 5 (Lenny)'
+aliases: []
 relations:
     platform:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Debian 5
+deprecated: true
 ---
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the nginx web server on Debian 5 (Lenny).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -99,7 +96,7 @@ Run the Phusion Passenger installer for Nginx:
 
 You'll be greeted by the Phusion Passenger Nginx installer program. Press "Enter" to continue with the installation.
 
-[![Phusion Passenger Nginx installer program running on Ubuntu 9.04 (Jaunty).](349-01-passenger-nginx-installer.png)](349-01-passenger-nginx-installer.png)
+![Phusion Passenger Nginx installer program running on Ubuntu 9.04 (Jaunty).](349-01-passenger-nginx-installer.png)
 
 When prompted for the Nginx installation method, we recommend you choose "1" to allow the installer to automatically download, compile, and install Nginx for you. Unless you have specific needs that would necessitate passing custom options to Nginx at compile time, this is the safest way to proceed.
 
@@ -110,7 +107,7 @@ Please do **not** remove the Passenger files from `opt` after the install. They 
 Nginx is now installed in `/opt/nginx`, but there are no "init" scripts to control this process. Issue the following sequence of commands to download a script, move it to the proper directory, set the proper permissions and set system startup links:
 
     cd /opt
-    wget -O init-deb.sh http://www.linode.com/docs/assets/600-init-deb.sh
+    wget -O init-deb.sh 600-init-deb.sh
     mv /opt/init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
     /usr/sbin/update-rc.d -f nginx defaults
@@ -123,7 +120,7 @@ The configuration file for Nginx is located at `/opt/nginx/conf/nginx.conf`. Thi
 
 ## Install MySQL Support (optional)
 
-If your application uses MySQL, install the database server by following our [MySQL on Debian 5 (Lenny) guide](/docs/databases/mysql/debian-5-lenny). Once it's installed and configured properly, issue the following commands:
+If your application uses MySQL, install the database server by following our [MySQL on Debian 5 (Lenny) guide](/cloud/guides/use-mysql-relational-databases-on-debian-5-lenny). Once it's installed and configured properly, issue the following commands:
 
     apt-get install libmysqlclient15-dev libmysql-ruby
     gem install mysql --no-rdoc --no-ri -- --with-mysql-dir=/usr/bin --with-mysql-lib=/usr/lib/mysql --with-mysql-include=/usr/include/mysql
@@ -136,7 +133,7 @@ You may wish to consult the following resources for additional information on th
 - [Ruby on Rails Documentation](http://rubyonrails.org/documentation)
 - [Nginx Home Page](http://nginx.org/)
 - [Nginx Documentation](http://nginx.org/en/docs/)
-- [Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Nginx Configuration](/cloud/guides/how-to-configure-nginx)
 
 
 

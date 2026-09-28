@@ -1,0 +1,4 @@
+{{- $id := .Anchor -}}
+{{- $level := .Level -}}
+{{- $ariaLabel := printf "%s: %s" .Page.LinkTitle .Text }}
+{{ partial "heading" (dict "id" $id "level" $level "text" .Text "ariaLabel" $ariaLabel) }}

@@ -1,27 +1,22 @@
 ---
 slug: ruby-on-rails-with-nginx-on-ubuntu-9-10-karmic
-deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Ruby on Rails with Nginx on Ubuntu 9.10 (Karmic)'
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Ubuntu 9.10 operating system.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-02-22
+modified: 2011-04-29
 keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 tags: ["web applications","nginx","ubuntu","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/ror/ruby-on-rails-with-nginx-on-ubuntu-9-10-karmic/','/frameworks/ruby-on-rails-nginx/ubuntu-9-10-karmic/','/websites/ror/ruby-on-rails-with-nginx-on-ubuntu-9-10-karmic/']
-modified: 2011-04-29
-modified_by:
-  name: Linode
-published: 2010-02-22
-title: 'Ruby on Rails with Nginx on Ubuntu 9.10 (Karmic)'
+aliases: []
 relations:
     platform:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Ubuntu 9.10
+deprecated: true
 ---
-
-
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the nginx web server on Ubuntu 9.10 (Karmic).
 
@@ -95,7 +90,7 @@ Run the Phusion Passenger installer for nginx:
 
 You'll be greeted by the Phusion Passenger nginx installer program. Press "Enter" to continue with the installation.
 
-[![Phusion Passenger nginx installer program running on Ubuntu 9.10 (Karmic).](463-01-passenger-nginx-installer.png)](463-01-passenger-nginx-installer.png)
+![Phusion Passenger nginx installer program running on Ubuntu 9.10 (Karmic).](463-01-passenger-nginx-installer.png)
 
 When prompted for the nginx installation method, we recommend you choose "1" to allow the installer to automatically download, compile, and install nginx for you. Unless you have specific needs that would necessitate passing custom options to nginx at compile time, this is the safest way to proceed. Accept the default installation location for nginx.
 
@@ -106,7 +101,7 @@ Please do **not** remove the Passenger files from `opt` after the installation. 
 Nginx is now installed in `/opt/nginx`, but there are no "init" scripts to control this process. Issue the following sequence of commands to download a script, move it to the proper directory, set the proper permissions and set system startup links:
 
     cd /opt
-    wget -O init-deb.sh http://www.linode.com/docs/assets/565-init-deb.sh
+    wget -O init-deb.sh 565-init-deb.sh
     mv /opt/init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
     /usr/sbin/update-rc.d -f nginx defaults
@@ -119,7 +114,7 @@ The configuration file for Nginx is located at `/opt/nginx/conf/nginx.conf`. Thi
 
 ## Install MySQL Support (optional)
 
-If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 9.10 (Karmic) guide](/docs/databases/mysql/ubuntu-9-10-karmic). Once it's installed and configured properly, issue the following commands:
+If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 9.10 (Karmic) guide](/cloud/guides/use-mysql-relational-databases-on-ubuntu-9-10-karmic). Once it's installed and configured properly, issue the following commands:
 
     apt-get install libmysqlclient15-dev libmysql-ruby
     gem install mysql --no-rdoc --no-ri -- --with-mysql-dir=/usr/bin --with-mysql-lib=/usr/lib/mysql --with-mysql-include=/usr/include/mysql
@@ -132,7 +127,7 @@ You may wish to consult the following resources for additional information on th
 - [Ruby on Rails Documentation](http://rubyonrails.org/documentation)
 - [Nginx Home Page](http://nginx.org/)
 - [Nginx Documentation](http://nginx.org/en/docs/)
-- [Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Nginx Configuration](/cloud/guides/how-to-configure-nginx)
 
 
 

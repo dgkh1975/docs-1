@@ -1,24 +1,21 @@
 ---
 slug: git-based-development-networks-with-girocco-on-debian-5-lenny
-author:
-  name: Linode
-  email: docs@linode.com
+title: 'Git Based Development Networks with Girocco on Debian 5 (Lenny)'
 description: 'Use the Girocco engine from repo.or.cz to provide easy access to Git repositories.'
+authors: ["Linode"]
+contributors: ["Linode"]
+published: 2010-06-23
+modified: 2013-09-24
 keywords: ["git", "girocco", "gitweb", "project hosting", "social coding"]
 tags: ["version control system","email","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/application-stacks/git-repository-hosting/','/applications/development/git-based-development-networks-with-girocco-on-debian-5-lenny/','/development/version-control/git-based-development-networks-with-girocco-on-debian-5-lenny/']
-modified: 2013-09-24
-modified_by:
-  name: Linode
-published: 2010-06-23
-title: 'Git Based Development Networks with Girocco on Debian 5 (Lenny)'
+aliases: []
 deprecated: true
 ---
 
 Girocco is the underlying engine created to power one of the first public git hosting services at [repo.or.cz](http://repo.or.cz/), and it allows users an easy to use web-based interface to create and view git repositories. Perhaps most excitingly, Girocco provides the ability to seamlessly "fork" an existing repository on the site and publish those changes without needing "push" access to the original repository, thus enabling a wide rage of distributed workflows and collaborative experiences.
 
-Before beginning this guide, we assume that you've completed the [getting started guide](/docs/getting-started/). If you're new to using git, you may also find our [introduction to git](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) a helpful prerequisite. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance). If you're new to using git, you may also find our [introduction to git](/cloud/guides/how-to-install-git-on-linux-mac-and-windows) a helpful prerequisite. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/cloud/guides/introduction-to-linux-concepts), [beginner's guide](https://techdocs.akamai.com/cloud-computing/docs/faqs-for-compute-instances) and [administration basics guide](/cloud/guides/linux-system-administration-basics).
 
 ## Install Prerequisites
 
@@ -31,13 +28,13 @@ Now issue the following command to install the required prerequisite software:
 
     apt-get install git-core build-essential netcat-openbsd apache2 wget libwww-perl libjson-perl librpc-xml-perl
 
-The above command installs the Apache HTTP Server, and this guide depends upon running Apache. For more information regarding the setup and configuration of Apache, consider our series of [Apache guides](/docs/web-servers/apache/).
+The above command installs the Apache HTTP Server, and this guide depends upon running Apache. For more information regarding the setup and configuration of Apache, consider our series of [Apache guides](/cloud/guides/web-servers/apache).
 
-This guide does not include explicit instructions for downloading and installing a local send-only [mail server](/docs/email/), which you will need to do for some operations such as sending password recovery tokens. If you do not have a local MTA installed or configured already, begin by issuing the following command:
+This guide does not include explicit instructions for downloading and installing a local send-only [mail server](/cloud/guides/email), which you will need to do for some operations such as sending password recovery tokens. If you do not have a local MTA installed or configured already, begin by issuing the following command:
 
     apt-get install mailx
 
-This will install the MTA "Exim." You can configure this MTA by issuing the following command and following the steps outlined in the [Exim send-only MTA guide](/docs/email/exim/sendonly-mail-server-with-exim-on-debian-5-lenny/) guide:
+This will install the MTA "Exim." You can configure this MTA by issuing the following command and following the steps outlined in the [Exim send-only MTA guide](/cloud/guides/sendonly-mail-server-with-exim-on-debian-5-lenny) guide:
 
     dpkg-reconfigure exim4-config
 
@@ -191,7 +188,7 @@ Modify your configuration file sufficiently with the new configuration options p
 To ensure complete functionality of the Girocco system, we need to run the `taskd.pl` and `jobd.sh` scripts as daemons to perform necessary system maintenance. Use or modify the following init script to control the daemon operations:
 
     cd /opt/
-    wget -O repo-taskd-init-deb.sh http://www.linode.com/docs/assets/564-repo-taskd-init-deb.sh
+    wget -O repo-taskd-init-deb.sh 564-repo-taskd-init-deb.sh
     cp /opt/repo-taskd-init-deb.sh /etc/init.d/repod
     chmod +x /etc/init.d/repod
     /usr/sbin/update-rc.d -f repod defaults
@@ -241,7 +238,7 @@ mount --bind /srv/repo/git /srv/repo/data/srv/git mount --bind /proc /srv/repo/d
 
 ## Configure Web Server
 
-For the purpose of this document we will set up the repository hosting service under the virtual host for the domain `repo.example.com`. You will need to ensure that [DNS is configured](/docs/tools-reference/linux-system-administration-basics#set-up-subdomains) for this domain. Additionally, ensure that the rewrite module is enabled by issuing the following commands:
+For the purpose of this document we will set up the repository hosting service under the virtual host for the domain `repo.example.com`. You will need to ensure that [DNS is configured](/cloud/guides/linux-system-administration-basics#set-up-subdomains) for this domain. Additionally, ensure that the rewrite module is enabled by issuing the following commands:
 
     a2enmod rewrite
     /etc/init.d/apache2 restart
@@ -281,9 +278,9 @@ You may wish to consult the following resources for additional information on th
 
 - [Girocco](http://repo.or.cz/w/girocco.git)
 - [Repo.or.cz](http://repo.or.cz/)
-- [Using Cron to Schedule Tasks](/docs/tools-reference/tools/schedule-tasks-with-cron/)
-- [Managing Permissions with Unix Users and Groups](/docs/tools-reference/linux-users-and-groups/)
-- [Using GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/)
+- [Using Cron to Schedule Tasks](/cloud/guides/schedule-tasks-with-cron)
+- [Managing Permissions with Unix Users and Groups](/cloud/guides/linux-users-and-groups)
+- [Using GNU Screen](/cloud/guides/using-gnu-screen-to-manage-persistent-terminal-sessions)
 
 
 

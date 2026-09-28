@@ -1,20 +1,16 @@
 ---
 slug: what-is-iptables
-author:
-  name: Hackersploit
+title: Understanding iptables
+title_meta: What is iptables
 description: 'This guide helps you understand iptables and explains what is iptables. It gets you started with examples and an overview of commands.'
-og_description: 'This guide helps you understand iptables and explains what is iptables. It gets you started with examples and an overview of commands.'
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2020-10-07
 keywords: ['understanding iptables', 'what is iptables']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-10-07
-modified_by:
-  name: Linode
-published: 2020-10-07
-title: What is iptables
-h1_title: Understanding iptables
 tags: ['networking','security']
 image: "Understanding_iptables.png"
-aliases: ['/security/firewalls/what-is-iptables/']
+aliases: []
 ---
 
 Implemented as Netfilter modules, iptables is a user-space utility program that allows a system administrator to configure the IP packet filter rules of the Linux kernel firewall. The filters are organized into tables containing chains of rules which govern how to treat network traffic packets.
@@ -27,7 +23,14 @@ This guide helps you understand iptables and explains what is iptables. It gets 
 
 A table is a collection of chains that serves a particular function. The 3 main tables in iptables are the Filter, NAT, and Mangle tables.
 
-!["iptables table of tables](iptables-table-of-tables.png "iptables table of tables")
+| **Filter**        | **NAT**                  | **Mangle**                        |
+|-------------------|--------------------------|-----------------------------------|
+| INPUT chain       | INPUT chain              | INPUT chain                       |
+| FORWARD chain     | OUTPUT chain             | FORWARD chain                     |
+| OUTPUT chain      | PREROUTING chain         | OUTPUT chain                      |
+|                   | POSTROUTING chain        | PREROUTING chain                  |
+|                   |                          | POSTROUTING chain                 |
+
 
   - The **Filter Table** is used to control the flow of packets in and out of a system.
   - The **NAT Table** is used to redirect connections to other interfaces on the network.
@@ -49,7 +52,7 @@ There are 5 main chains in iptables:
 
 {{< note >}}
 The filter table is responsible for blocking or allowing connections and is the default filter used in iptables.
-{{</ note >}}
+{{< /note >}}
 
 ### Understanding Packet Flow
 
@@ -138,10 +141,9 @@ You can specify the default policy for all the chains by running the following c
 This sets the default policy for all chains to `ACCEPT`. You can also change this to `DROP` or `REJECT` if you wish to disable access to any services on the server and manually allow the services you wish to expose.
 
 ### Blocking & Allowing Connections From IP Address
-
 {{< note >}}
 In the following examples, replace the sample 198.168.1.1 IP address with the IP address you wish to block or allow.
-{{</ note >}}
+{{< /note >}}
 
 You can block all incoming requests from an IP address by adding the following rule:
 
@@ -195,4 +197,4 @@ If you want to clear all the rules that you have added to start over, you can us
 
 ## Next Steps
 
-For more detailed information on iptables, including using ip6tables, rulesets, and iptables-persistent, see the [Controlling Network Traffic with iptables - A Tutorial](/docs/security/firewalls/control-network-traffic-with-iptables/) guide.
+For more detailed information on iptables, including using ip6tables, rulesets, and iptables-persistent, see the [Controlling Network Traffic with iptables - A Tutorial](/cloud/guides/control-network-traffic-with-iptables) guide.

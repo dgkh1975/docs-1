@@ -1,19 +1,15 @@
 ---
 slug: how-to-configure-automated-security-updates-centos
-author:
-  name: Hackersploit
-description: 'Keeping your system up-to-date with the latest packages and security updates can be a tedious task. Automate security (or other package) updates with the dnf-automatic command line utility or the Cockpit web application on CentOS.'
-og_description: 'Keeping your system up-to-date with the latest packages and security updates can be a tedious task. Automate security (or other package) updates with the dnf-automatic command line utility or the Cockpit web application on CentOS.'
+title: "Configuring Automated Security Updates on CentOS"
+title_meta: "How to Configure Automated Security Updates on CentOS"
+description: "In this tutorial, you will learn how to configure automated updates on CentOS using the dnf-automatic tool or the Cockpit web application."
+authors: ["Hackersploit"]
+contributors: ["Hackersploit"]
+published: 2020-10-22
 keywords: ["centos automated security upgrades", "centos cockpit dashboard"]
 tags: ["centos", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-10-22
-modified_by:
-  name: Linode
-published: 2020-10-22
-title: How to Configure Automated Security Updates on CentOS
-h1_title: Configuring Automated Security Updates on CentOS
-aliases: ['/security/basics/how-to-configure-automated-security-updates-centos/']
+aliases: []
 relations:
     platform:
         key: automated-security-upgrades
@@ -26,16 +22,15 @@ Keeping your system up-to-date with the latest packages and security updates can
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/guides/getting-started) guide.
+1.  Complete the [Getting Started](https://techdocs.akamai.com/cloud-computing/docs/getting-started) guide.
 
-1.  Follow the [Securing Your Server](/docs/guides/securing-your-server/) guide to create a standard user account, and harden SSH access.
+1.  Follow the [Setting Up and Securing a Compute Instance](https://techdocs.akamai.com/cloud-computing/docs/set-up-and-secure-a-compute-instance) guide to create a standard user account, and harden SSH access.
 
 1.  Log into your Linode via SSH and update.
 
         sudo yum update
-
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/guides/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/cloud/guides/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Install dnf-automatic
